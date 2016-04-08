@@ -2,11 +2,6 @@
 Hull University Graphics Helper (HUGH) GUI Examples
 ===================================================
 
-.. image:: https://travis-ci.org/regnirpsj/hugh-platform.svg?branch=master
-   :target: https://travis-ci.org/regnirpsj/hugh-platform
-.. image:: https://coveralls.io/repos/github/regnirpsj/hugh-platform/badge.svg?branch=master
-   :target: https://coveralls.io/github/regnirpsj/hugh-platform?branch=master
-
 :Author: Jan P Springer <regnirpsj@gmail.com>
 
 .. contents::
