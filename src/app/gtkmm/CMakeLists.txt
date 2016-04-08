@@ -19,7 +19,8 @@ include_directories(SYSTEM ${HUGH_INCLUDE_DIRS})
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../common)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 
-#add_definitions(-DHUGH_ALL_TRACE)
+#add_definitions(-DHUGH_GTKMM_TRACE)
+#add_definitions(-DHUGH_GTKMM_TRACE_LOGFILE)
 
 set(SRC)
 list(APPEND SRC application.cpp)

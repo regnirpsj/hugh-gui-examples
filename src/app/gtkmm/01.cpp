@@ -21,12 +21,13 @@
 // includes, project
 
 #include <application.hpp> // hugh::gtkmm::application
+#include <logfile.hpp>     // hugh::support::scoped_redirect_guard
 #include <window.hpp>      // hugh::gtkmm::window
 
-#define HUGH_USE_TRACE
-#undef HUGH_USE_TRACE
+#if defined(HUGH_GTKMM_TRACE)
+#  define HUGH_USE_TRACE
+#endif
 #include <hugh/support/trace.hpp>
-#include <logfile.hpp>
 
 // internal unnamed namespace
 
@@ -44,7 +45,7 @@ namespace {
 int
 main(int argc, char* argv[])
 {
-#if defined(HUGH_ALL_TRACE)
+#if defined(HUGH_GTKMM_TRACE_LOGFILE)
   hugh::support::scoped_redirect_guard const srg(argv[0]);
 #endif
   
