@@ -24,4 +24,4 @@ set(LIBS)
 list(APPEND LIBS ${HUGH_LIBRARIES})
 list(APPEND LIBS ${Boost_LIBRARIES})
 
-cma_setup_library(common SOURCES ${SRC} DEPENDENCIES ${LIBS} STATIC)
+cma_setup_library(common SOURCES ${SRC} DEPENDENCIES ${LIBS} STATIC NOINSTALL)

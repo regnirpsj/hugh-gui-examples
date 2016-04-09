@@ -30,7 +30,7 @@ set(LIBS)
 list(APPEND LIBS ${HUGH_LIBRARIES})
 list(APPEND LIBS ${GTKMM_LIBRARIES})
 
-cma_setup_library(gtkmm SOURCES ${SRC} DEPENDENCIES ${LIBS} STATIC)
+cma_setup_library(gtkmm SOURCES ${SRC} DEPENDENCIES ${LIBS} STATIC NOINSTALL)
 
 list(APPEND LIBS gtkmm)
 list(APPEND LIBS common)
