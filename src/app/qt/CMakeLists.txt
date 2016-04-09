@@ -35,6 +35,5 @@ cma_setup_library(qt SOURCES ${SRC} DEPENDENCIES ${LIBS} STATIC NOINSTALL)
 
 list(APPEND LIBS qt)
 list(APPEND LIBS common)
-list(APPEND LIBS Qt5::Widgets)
 
 cma_setup_application(qt01 SOURCES 01.cpp DEPENDENCIES ${LIBS})
