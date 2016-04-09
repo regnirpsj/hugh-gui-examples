@@ -8,3 +8,4 @@
 
 add_subdirectory(common)
 add_subdirectory(gtkmm)
+add_subdirectory(qt)

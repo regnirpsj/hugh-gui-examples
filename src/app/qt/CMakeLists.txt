@@ -8,19 +8,20 @@
 
 cma_print_current_directory()
 
-find_package(PkgConfig)
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
+set(CMAKE_AUTOMOC ON)
 
-pkg_check_modules(GTKMM REQUIRED gtkmm-3.0)
+find_package(Qt5Widgets REQUIRED)
+find_package(HUGH       REQUIRED COMPONENTS support)
 
-find_package(HUGH REQUIRED COMPONENTS support)
-
-include_directories(SYSTEM ${GTKMM_INCLUDE_DIRS})
+include_directories(SYSTEM ${Qt5Widgets_INCLUDES})
 include_directories(SYSTEM ${HUGH_INCLUDE_DIRS})
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../common)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 
-#add_definitions(-DHUGH_GTKMM_TRACE)
-#add_definitions(-DHUGH_GTKMM_TRACE_LOGFILE)
+add_definitions(${Qt5Widgets_DEFINITIONS})
+#add_definitions(-DHUGH_QT_TRACE)
+#add_definitions(-DHUGH_QT_TRACE_LOGFILE)
 
 set(SRC)
 list(APPEND SRC application.cpp)
@@ -28,11 +29,12 @@ list(APPEND SRC window.cpp)
 
 set(LIBS)
 list(APPEND LIBS ${HUGH_LIBRARIES})
-list(APPEND LIBS ${GTKMM_LIBRARIES})
+list(APPEND LIBS ${Qt5Widgets_LIBRARIES})
 
-cma_setup_library(gtkmm SOURCES ${SRC} DEPENDENCIES ${LIBS} STATIC)
+cma_setup_library(qt SOURCES ${SRC} DEPENDENCIES ${LIBS} STATIC)
 
-list(APPEND LIBS gtkmm)
+list(APPEND LIBS qt)
 list(APPEND LIBS common)
+list(APPEND LIBS Qt5::Widgets)
 
-cma_setup_application(gtkmm01 SOURCES 01.cpp DEPENDENCIES ${LIBS})
+cma_setup_application(qt01 SOURCES 01.cpp DEPENDENCIES ${LIBS})
