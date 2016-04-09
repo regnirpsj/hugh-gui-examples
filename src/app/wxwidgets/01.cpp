@@ -6,7 +6,7 @@
 /*                                                                                                */
 /**************************************************************************************************/
 /*                                                                                                */
-/*  module     :  hugh/app/wxwidgets/01.cpp                                                              */
+/*  module     :  hugh/app/wxwidgets/01.cpp                                                       */
 /*  project    :                                                                                  */
 /*  description:                                                                                  */
 /*                                                                                                */
@@ -59,8 +59,7 @@ main(int argc, char* argv[])
     TRACE("main: try-scope");
 
     // cannot live in 'std::unique_ptr<>"
-    wxApp*   app(nullptr);
-    wxFrame* win(nullptr);
+    wxApp* app(nullptr);
   
     {
       TRACE("main: create");
@@ -69,9 +68,7 @@ main(int argc, char* argv[])
 
       wxEntryStart(argc, argv);
       
-      app->CallOnInit();
-      
-      win = new hugh::wxwidgets::window(argv[0]);
+      app->CallOnInit();      
     }
   
     {
@@ -81,8 +78,6 @@ main(int argc, char* argv[])
     {
       TRACE("main: exec");
 
-      win->Show  ();
-      
       app->OnRun ();
       app->OnExit();
     }

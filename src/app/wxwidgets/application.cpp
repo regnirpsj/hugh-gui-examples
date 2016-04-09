@@ -22,7 +22,7 @@
 
 // includes, project
 
-//#include <>
+#include <window.hpp>
 
 #if defined(HUGH_WXWIDGETS_TRACE)
 #  define HUGH_USE_TRACE
@@ -62,6 +62,18 @@ namespace hugh {
       TRACE("hugh::wxwidgets::application::~application");
     }
 
+    /* virtual */ bool
+    application::OnInit()
+    {
+      wxFrame *frame(new window(argv[0].ToStdString()));
+      
+      frame->Show(true);
+      
+      SetTopWindow(frame);
+
+      return true;
+    }
+    
   } // namespace wxwidgets {
   
 } // namespace hugh {

@@ -51,7 +51,7 @@ namespace hugh {
 
     /* explicit */
     window::window(std::string const& a)
-      : inherited(nullptr, wxID_ANY, a, wxDefaultPosition, wxSize(250, 150))
+      : inherited(nullptr, wxID_ANY, a)
     {
       TRACE("hugh::wxwidgets::window::window");
     }

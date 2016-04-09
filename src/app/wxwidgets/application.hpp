@@ -38,7 +38,9 @@ namespace hugh {
 
       explicit application();
       virtual ~application();
-    
+
+      virtual bool OnInit();
+      
     protected:
 
     };
