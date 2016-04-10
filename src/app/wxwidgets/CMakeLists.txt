@@ -19,11 +19,12 @@ include_directories(SYSTEM ${HUGH_INCLUDE_DIRS})
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../common)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 
+# 'wxWidgets_DEFINITIONS' is missing the initial '-D' for each contained define
 foreach(def ${wxWidgets_DEFINITIONS})
   add_definitions(-D${def})
 endforeach()
 
-add_definitions(-DHUGH_WXWIDGETS_TRACE)
+#add_definitions(-DHUGH_WXWIDGETS_TRACE)
 #add_definitions(-DHUGH_WXWIDGETS_TRACE_LOGFILE)
 
 set(SRC)
