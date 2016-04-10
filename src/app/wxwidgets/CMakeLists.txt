@@ -8,10 +8,12 @@
 
 cma_print_current_directory()
 
-set(CMAKE_INCLUDE_CURRENT_DIR ON)
-set(CMAKE_AUTOMOC ON)
+find_package(wxWidgets COMPONENTS core base)
 
-find_package(wxWidgets REQUIRED COMPONENTS core base)
+if(NOT wxWidgets_FOUND)
+  return()
+endif()
+
 find_package(HUGH      REQUIRED COMPONENTS support)
 
 include_directories(SYSTEM ${wxWidgets_INCLUDE_DIRS})

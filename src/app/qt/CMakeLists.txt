@@ -11,8 +11,14 @@ cma_print_current_directory()
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_AUTOMOC ON)
 
-find_package(Qt5Widgets REQUIRED)
-find_package(HUGH       REQUIRED COMPONENTS support)
+find_package(Qt5Widgets)
+
+if(NOT Qt5Widgets_FOUND)
+  return()
+endif()
+
+
+find_package(HUGH REQUIRED COMPONENTS support)
 
 include_directories(SYSTEM ${Qt5Widgets_INCLUDES})
 include_directories(SYSTEM ${HUGH_INCLUDE_DIRS})

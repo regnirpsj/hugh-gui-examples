@@ -10,7 +10,11 @@ cma_print_current_directory()
 
 find_package(PkgConfig)
 
-pkg_check_modules(GTKMM REQUIRED gtkmm-3.0)
+pkg_check_modules(GTKMM gtkmm-3.0)
+
+if(NOT GTKMM_FOUND)
+  return()
+endif()
 
 find_package(HUGH REQUIRED COMPONENTS support)
 
