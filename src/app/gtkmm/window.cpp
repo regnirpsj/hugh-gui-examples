@@ -18,7 +18,7 @@
 
 // includes, system
 
-//#include <>
+#include <gdk/gdkkeysyms.h> // GDK_*
 
 // includes, project
 
@@ -54,6 +54,18 @@ namespace hugh {
       : inherited()
     {
       TRACE("hugh::gtkmm::window::window");
+
+      {
+        static Gdk::EventMask const event_mask(Gdk::BUTTON_MOTION_MASK |
+                                               Gdk::BUTTON_PRESS_MASK  |
+                                               Gdk::BUTTON_RELEASE_MASK|
+                                               Gdk::KEY_PRESS_MASK     |
+                                               Gdk::KEY_RELEASE_MASK   |
+                                               Gdk::POINTER_MOTION_MASK|
+                                               Gdk::SCROLL_MASK        );
+
+        set_events(get_events() | event_mask);
+      }
     }
 
     /* virtual */
