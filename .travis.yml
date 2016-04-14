@@ -14,6 +14,7 @@ matrix:
       addons:
         apt:
           sources:
+            - ubuntu-sdk-team
             - ubuntu-toolchain-r-test
             - george-edison55-precise-backports
             - boost-latest
@@ -33,6 +34,7 @@ matrix:
       addons:
         apt:
           sources:
+            - ubuntu-sdk-team
             - ubuntu-toolchain-r-test
             - llvm-toolchain-precise-3.7
             - george-edison55-precise-backports
