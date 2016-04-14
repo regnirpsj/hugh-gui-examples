@@ -18,8 +18,8 @@
 
 // includes, system
 
-#include <FL/Fl_Box.h>    // Fl_Box
-#include <FL/Fl_Window.h> // Fl_Window
+#include <FL/Fl_Box.H>    // Fl_Box
+#include <FL/Fl_Window.H> // Fl_Window
 #include <memory>         // std::unique_ptr<>
 #include <string>         // std::string
 

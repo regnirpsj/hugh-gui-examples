@@ -18,7 +18,7 @@
 
 // includes, system
 
-#include <FL/Fl.h> // Fl
+#include <FL/Fl.H> // Fl
 
 // includes, project
 
