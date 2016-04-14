@@ -2,6 +2,9 @@
 Hull University Graphics Helper (HUGH) GUI Examples
 ===================================================
 
+.. image:: https://travis-ci.org/regnirpsj/hugh-gui-examples.svg?branch=master
+   :target: https://travis-ci.org/regnirpsj/hugh-gui-examples
+
 :Author: Jan P Springer <regnirpsj@gmail.com>
 
 .. contents::
