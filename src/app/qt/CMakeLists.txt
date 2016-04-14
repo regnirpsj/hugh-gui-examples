@@ -17,6 +17,9 @@ if(NOT Qt5Widgets_FOUND)
   return()
 endif()
 
+cma_print_variable(Qt5Widgets_INCLUDES)
+cma_print_variable(Qt5Widgets_DEFINITIONS)
+cma_print_variable(Qt5Widgets_LIBRARIES)
 
 find_package(HUGH REQUIRED COMPONENTS support)
 
