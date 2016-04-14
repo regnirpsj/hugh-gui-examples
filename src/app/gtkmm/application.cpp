@@ -51,7 +51,9 @@ namespace hugh {
     
     /* explicit */
     application::application(int a, char* b[])
-      : inherited(a, b)
+      // actually, param3 and param4 have defaults but it looks like not all
+      // gtkmm3 installation got that memo 8(
+      : inherited(a, b, Glib::ustring(), Gio::APPLICATION_FLAGS_NONE)
     {
       TRACE("hugh::gtkmm::application::application");
     }
