@@ -37,9 +37,9 @@ set(LIBS)
 list(APPEND LIBS ${HUGH_LIBRARIES})
 list(APPEND LIBS ${wxWidgets_LIBRARIES})
 
-cma_setup_library(wxwidgets SOURCES ${SRC} DEPENDENCIES ${LIBS} STATIC NOINSTALL)
+cma_setup_library(wxwidgets_wrap SOURCES ${SRC} DEPENDENCIES ${LIBS} STATIC NOINSTALL)
 
-list(APPEND LIBS wxwidgets)
+list(APPEND LIBS wxwidgets_wrap)
 list(APPEND LIBS common)
 
 cma_setup_application(wxwidgets01 SOURCES 01.cpp DEPENDENCIES ${LIBS})

@@ -34,9 +34,9 @@ set(LIBS)
 list(APPEND LIBS ${HUGH_LIBRARIES})
 list(APPEND LIBS ${GTKMM_LIBRARIES})
 
-cma_setup_library(gtkmm SOURCES ${SRC} DEPENDENCIES ${LIBS} STATIC NOINSTALL)
+cma_setup_library(gtkmm_wrap SOURCES ${SRC} DEPENDENCIES ${LIBS} STATIC NOINSTALL)
 
-list(APPEND LIBS gtkmm)
+list(APPEND LIBS gtkmm_wrap)
 list(APPEND LIBS common)
 
 cma_setup_application(gtkmm01 SOURCES 01.cpp DEPENDENCIES ${LIBS})

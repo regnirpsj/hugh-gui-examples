@@ -19,7 +19,7 @@ if(NOT FLTK_FOUND)
   return()
 endif()
 
-find_package(HUGH      REQUIRED COMPONENTS support)
+find_package(HUGH REQUIRED COMPONENTS support)
 
 include_directories(SYSTEM ${FLTK_INCLUDE_DIR})
 include_directories(SYSTEM ${HUGH_INCLUDE_DIRS})
@@ -37,9 +37,9 @@ set(LIBS)
 list(APPEND LIBS ${HUGH_LIBRARIES})
 list(APPEND LIBS ${FLTK_BASE_LIBRARY})
 
-cma_setup_library(fltk SOURCES ${SRC} DEPENDENCIES ${LIBS} STATIC NOINSTALL)
+cma_setup_library(fltk_wrap SOURCES ${SRC} DEPENDENCIES ${LIBS} STATIC NOINSTALL)
 
-list(APPEND LIBS fltk)
+list(APPEND LIBS fltk_wrap)
 list(APPEND LIBS common)
 
 cma_setup_application(fltk01 SOURCES 01.cpp DEPENDENCIES ${LIBS})

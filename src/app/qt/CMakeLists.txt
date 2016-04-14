@@ -37,9 +37,9 @@ set(LIBS)
 list(APPEND LIBS ${HUGH_LIBRARIES})
 list(APPEND LIBS ${Qt5Widgets_LIBRARIES})
 
-cma_setup_library(qt SOURCES ${SRC} DEPENDENCIES ${LIBS} STATIC NOINSTALL)
+cma_setup_library(qt_wrap SOURCES ${SRC} DEPENDENCIES ${LIBS} STATIC NOINSTALL)
 
-list(APPEND LIBS qt)
+list(APPEND LIBS qt_wrap)
 list(APPEND LIBS common)
 
 cma_setup_application(qt01 SOURCES 01.cpp DEPENDENCIES ${LIBS})
