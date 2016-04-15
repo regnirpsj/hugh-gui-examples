@@ -17,9 +17,14 @@ if(NOT Qt5Widgets_FOUND)
   return()
 endif()
 
+cma_print_variable(Qt5Widgets_VERSION)
+cma_print_variable(Qt5Widgets_LIBRARIES)
 cma_print_variable(Qt5Widgets_INCLUDE_DIRS)
 cma_print_variable(Qt5Widgets_DEFINITIONS)
-cma_print_variable(Qt5Widgets_LIBRARIES)
+cma_print_variable(Qt5Widgets_COMPILE_DEFINITIONS)
+cma_print_variable(Qt5Widgets_EXECUTABLE_COMPILE_FLAGS)
+
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${Qt5Widgets_EXECUTABLE_COMPILE_FLAGS}")
 
 find_package(HUGH REQUIRED COMPONENTS support)
 
