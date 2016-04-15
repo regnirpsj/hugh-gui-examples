@@ -17,14 +17,14 @@ if(NOT Qt5Widgets_FOUND)
   return()
 endif()
 
-cma_print_variable(Qt5Widgets_VERSION)
-cma_print_variable(Qt5Widgets_LIBRARIES)
-cma_print_variable(Qt5Widgets_INCLUDE_DIRS)
-cma_print_variable(Qt5Widgets_DEFINITIONS)
-cma_print_variable(Qt5Widgets_COMPILE_DEFINITIONS)
-cma_print_variable(Qt5Widgets_EXECUTABLE_COMPILE_FLAGS)
-
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${Qt5Widgets_EXECUTABLE_COMPILE_FLAGS}")
+if(VERBOSE)
+  cma_print_variable(Qt5Widgets_VERSION)
+  cma_print_variable(Qt5Widgets_LIBRARIES)
+  cma_print_variable(Qt5Widgets_INCLUDE_DIRS)
+  cma_print_variable(Qt5Widgets_DEFINITIONS)
+  cma_print_variable(Qt5Widgets_COMPILE_DEFINITIONS)
+  cma_print_variable(Qt5Widgets_EXECUTABLE_COMPILE_FLAGS)
+endif()
 
 find_package(HUGH REQUIRED COMPONENTS support)
 
@@ -44,6 +44,8 @@ list(APPEND SRC window.cpp)
 set(LIBS)
 list(APPEND LIBS ${HUGH_LIBRARIES})
 list(APPEND LIBS ${Qt5Widgets_LIBRARIES})
+
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${Qt5Widgets_EXECUTABLE_COMPILE_FLAGS}")
 
 cma_setup_library(qt_wrap SOURCES ${SRC} DEPENDENCIES ${LIBS} STATIC NOINSTALL)
 
