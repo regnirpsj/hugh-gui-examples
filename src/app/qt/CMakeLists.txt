@@ -17,13 +17,13 @@ if(NOT Qt5Widgets_FOUND)
   return()
 endif()
 
-cma_print_variable(Qt5Widgets_INCLUDES)
+cma_print_variable(Qt5Widgets_INCLUDE_DIRS)
 cma_print_variable(Qt5Widgets_DEFINITIONS)
 cma_print_variable(Qt5Widgets_LIBRARIES)
 
 find_package(HUGH REQUIRED COMPONENTS support)
 
-include_directories(SYSTEM ${Qt5Widgets_INCLUDES})
+include_directories(SYSTEM ${Qt5Widgets_INCLUDE_DIRS})
 include_directories(SYSTEM ${HUGH_INCLUDE_DIRS})
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../common)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
