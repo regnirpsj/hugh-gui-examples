@@ -33,6 +33,8 @@ namespace hugh {
 
     class window : public QWidget {
 
+      Q_OBJECT
+      
     public:
 
       using inherited = QWidget;

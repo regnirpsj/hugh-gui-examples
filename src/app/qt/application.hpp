@@ -32,6 +32,8 @@ namespace hugh {
 
     class application : public QApplication {
 
+      Q_OBJECT
+      
     public:
 
       using inherited = QApplication;
