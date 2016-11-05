@@ -58,7 +58,9 @@ namespace hugh {
       if (!window_) {
         std::ostringstream ostr;
 
-        ostr << "SDL_CreateWindow error: " << SDL_GetError();
+        ostr << "hugh::sdl::window::window: "
+             << "error in 'SDL_CreateWindow': "
+             << SDL_GetError();
       
         throw std::runtime_error(ostr.str());
       }
@@ -68,7 +70,9 @@ namespace hugh {
       if (!surface) {
         std::ostringstream ostr;
 
-        ostr << "SDL_GetWindowSurface error: " << SDL_GetError();
+        ostr << "hugh::sdl::window::window: "
+             << "error in 'SDL_GetWindowSurface': "
+             << SDL_GetError();
       
         throw std::runtime_error(ostr.str());
       }
