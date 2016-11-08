@@ -6,7 +6,7 @@
 /*                                                                                                */
 /**************************************************************************************************/
 /*                                                                                                */
-/*  module     :  hugh/app/sdl/01.cpp                                                             */
+/*  module     :  hugh/app/sdl/02.cpp                                                             */
 /*  project    :                                                                                  */
 /*  description:                                                                                  */
 /*                                                                                                */
@@ -14,7 +14,6 @@
 
 // includes, system
 
-#include <SDL2/SDL.h>  // SDL_*
 #include <cstdlib>     // EXIT_*
 #include <memory>      // std::unique_ptr<>
 #include <stdexcept>   // std::runtime_error
@@ -23,7 +22,7 @@
 // includes, project
 
 #include <logfile.hpp> // hugh::support::scoped_redirect_guard
-#include <window.hpp>
+#include <window.hpp>  // hugh::sdl::window
 
 #if defined(HUGH_SDL_TRACE)
 #  define HUGH_USE_TRACE
@@ -37,7 +36,6 @@ namespace {
   // types, internal (class, enum, struct, union, typedef)
   
   // variables, internal
-
   
   // functions, internal
 
@@ -58,17 +56,17 @@ main(int /* argc */, char* argv[])
   try {
     TRACE("main: try-scope");    
 
-    if (0 != SDL_Init(SDL_INIT_VIDEO)) {
+    if (0 != ::SDL_Init(SDL_INIT_VIDEO)) {
       std::ostringstream ostr;
 
-      ostr << "SDL_Init error: " << SDL_GetError();
+      ostr << "SDL_Init error: " << ::SDL_GetError();
       
       throw std::runtime_error(ostr.str());
     }
 
     win.reset(new hugh::sdl::window(argv[0], 100, 100, 640, 480, SDL_WINDOW_SHOWN));
     
-    SDL_Delay(5000);
+    ::SDL_Delay(5000);
     
     // throw std::runtime_error("deliberate exception");
   }
@@ -85,7 +83,7 @@ main(int /* argc */, char* argv[])
     result = EXIT_FAILURE;
   }
 
-  SDL_Quit();
+  ::SDL_Quit();
   
   return result;
 }

@@ -6,7 +6,7 @@
 /*                                                                                                */
 /**************************************************************************************************/
 /*                                                                                                */
-/*  module     :  hugh/app/sdl/01.cpp                                                             */
+/*  module     :  hugh/app/sdl/03.cpp                                                             */
 /*  project    :                                                                                  */
 /*  description:                                                                                  */
 /*                                                                                                */
@@ -14,14 +14,16 @@
 
 // includes, system
 
-#include <SDL.h>       // SDL_*
-#include <cstdlib>     // EXIT_*
-#include <stdexcept>   // std::runtime_error
-#include <sstream>     // std::ostringstream
+#include <cstdlib>         // EXIT_*
+#include <memory>          // std::unique_ptr<>
+#include <stdexcept>       // std::runtime_error
+#include <sstream>         // std::ostringstream
 
 // includes, project
 
-#include <logfile.hpp> // hugh::support::scoped_redirect_guard
+#include <logfile.hpp>     // hugh::support::scoped_redirect_guard
+#include <application.hpp> // hugh::sdl::application
+#include <window.hpp>      // hugh::sdl::window
 
 #if defined(HUGH_SDL_TRACE)
 #  define HUGH_USE_TRACE
@@ -33,6 +35,36 @@
 namespace {
   
   // types, internal (class, enum, struct, union, typedef)
+
+  class application : public hugh::sdl::application {
+
+  public:
+
+    explicit application(int a, char* b[])
+      : hugh::sdl::application(a, b),
+        window_               (nullptr)
+    {
+      TRACE("<unnamed>::application::application");
+    }
+
+    virtual void run()
+    {
+      TRACE("<unnamed>::application::run");
+
+      window_.reset(new hugh::sdl::window(command_line_[0], 100, 100, 640, 480, SDL_WINDOW_SHOWN));
+      
+      ::SDL_Delay(2500);
+
+      // throw std::runtime_error("deliberate exception");
+
+      ::SDL_Delay(2500);
+    }
+
+  private:
+
+    std::unique_ptr<hugh::sdl::window> window_;
+    
+  };
   
   // variables, internal
   
@@ -41,7 +73,7 @@ namespace {
 } // namespace {
 
 int
-main(int /* argc */, char* argv[])
+main(int argc, char* argv[])
 {
 #if defined(HUGH_SDL_TRACE_LOGFILE)
   hugh::support::scoped_redirect_guard const srg(argv[0]);
@@ -49,47 +81,15 @@ main(int /* argc */, char* argv[])
   
   TRACE("main");
   
-  signed result(EXIT_SUCCESS);
-
+  signed                                  result(EXIT_SUCCESS);
+  std::unique_ptr<hugh::sdl::application> app   (nullptr);
+  
   try {
     TRACE("main: try-scope");    
 
-    if (0 != ::SDL_Init(SDL_INIT_VIDEO)) {
-      std::ostringstream ostr;
+    app.reset(new application(argc, argv));    
 
-      ostr << "SDL_Init error: " << ::SDL_GetError();
-      
-      throw std::runtime_error(ostr.str());
-    }
-
-    SDL_Window* win(::SDL_CreateWindow(argv[0], 100, 100, 640, 480, SDL_WINDOW_SHOWN));
-
-    if (!win) {
-      std::ostringstream ostr;
-
-      ostr << "SDL_CreateWindow error: " << ::SDL_GetError();
-      
-      throw std::runtime_error(ostr.str());
-    }
-
-    SDL_Surface* sfc(::SDL_GetWindowSurface(win));
-
-    if (!sfc) {
-      std::ostringstream ostr;
-
-      ostr << "SDL_GetWindowSurface error: " << ::SDL_GetError();
-      
-      throw std::runtime_error(ostr.str());
-    }
-    
-    ::SDL_FillRect           (sfc, nullptr, ::SDL_MapRGB(sfc->format, 0xFF, 0xFF, 0xFF));
-    ::SDL_UpdateWindowSurface(win);
-    
-    ::SDL_Delay              (5000);
-    
-    ::SDL_DestroyWindow      (win);
-    
-    // throw std::runtime_error("deliberate exception");
+    app->run();
   }
 
   catch (std::exception const& ex) {
@@ -103,8 +103,6 @@ main(int /* argc */, char* argv[])
     
     result = EXIT_FAILURE;
   }
-
-  ::SDL_Quit();
   
   return result;
 }

@@ -18,7 +18,7 @@ endif()
 
 find_package(HUGH REQUIRED COMPONENTS support)
 
-include_directories(SYSTEM ${SDL_INCLUDE_DIR})
+include_directories(SYSTEM ${SDL_INCLUDE_DIRS})
 include_directories(SYSTEM ${HUGH_INCLUDE_DIRS})
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../common)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
@@ -41,3 +41,4 @@ list(APPEND LIBS common)
 
 cma_setup_application(sdl01 SOURCES 01.cpp DEPENDENCIES ${LIBS})
 cma_setup_application(sdl02 SOURCES 02.cpp DEPENDENCIES ${LIBS})
+cma_setup_application(sdl03 SOURCES 03.cpp DEPENDENCIES ${LIBS})
