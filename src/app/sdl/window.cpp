@@ -60,25 +60,25 @@ namespace hugh {
 
         ostr << "hugh::sdl::window::window: "
              << "error in 'SDL_CreateWindow': "
-             << SDL_GetError();
+             << ::SDL_GetError();
       
         throw std::runtime_error(ostr.str());
       }
 
-      SDL_Surface* surface(SDL_GetWindowSurface(window_));
+      SDL_Surface* surface(::SDL_GetWindowSurface(window_));
 
       if (!surface) {
         std::ostringstream ostr;
 
         ostr << "hugh::sdl::window::window: "
              << "error in 'SDL_GetWindowSurface': "
-             << SDL_GetError();
+             << ::SDL_GetError();
       
         throw std::runtime_error(ostr.str());
       }
     
-      SDL_FillRect           (surface, NULL, SDL_MapRGB(surface->format, 0xFF, 0xFF, 0xFF));
-      SDL_UpdateWindowSurface(window_);
+      ::SDL_FillRect           (surface, nullptr, ::SDL_MapRGB(surface->format, 0xFF, 0xFF, 0xFF));
+      ::SDL_UpdateWindowSurface(window_);
     }
 
     /* virtual */

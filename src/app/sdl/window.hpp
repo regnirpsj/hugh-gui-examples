@@ -18,8 +18,8 @@
 
 // includes, system
 
-#include <SDL2/SDL.h> // SDL_*
-#include <string>     // std::string
+#include <SDL.h>  // SDL_*
+#include <string> // std::string
 
 // includes, project
 
